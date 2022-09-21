@@ -34,7 +34,7 @@ export default class Graph extends Component {
 				yValueFormatString: "###",
 				xValueFormatString: "MMMM",
 				type: "spline",
-                color: "#8AD9D7",
+                color: "#3DE6B9",
                 lineThickness: 10,
 				dataPoints: [
 					{ x: new Date(2017, 0), y: 500 },
