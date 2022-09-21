@@ -1,111 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {CanvasJSChart} from 'canvasjs-react-charts'
+// var CanvasJS = CanvasJSReact.CanvasJS;
+// var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+export default class Graph extends Component {
+	render() {
+		const options = {
+			animationEnabled: true,
+            
+			// title:{
+			// 	text: "Monthly Sales - 2017"
+			// },
+            toolbar: {
 
-import DataSource from 'devextreme/data/data_source';
-import 'devextreme/data/odata/store';
-
-import Chart, {
-  ValueAxis,
-  ArgumentAxis,
-  CommonPaneSettings,
-  Grid,
-  Series,
-  Label,
-  Legend,
-  Size,
-  Border,
-  Tooltip,
-  Export,
-  LoadingIndicator,
-} from 'devextreme-react/chart';
-
-import SelectBox from 'devextreme-react/select-box';
-
-import { months } from './data.js';
-
-class Graph extends React.Component {
-  constructor(props) {
-    super(props);
-    this.chartDataSource = new DataSource({
-      store: {
-        type: 'odata',
-        url: 'https://js.devexpress.com/Demos/WidgetsGallery/odata/WeatherItems',
-      },
-      postProcess(results) {
-        return results[0].DayItems;
-      },
-      expand: 'DayItems',
-      filter: ['Id', '=', 1],
-      paginate: false,
-    });
-
-    this.onValueChanged = (data) => {
-      this.chartDataSource.filter(['Id', '=', data.value]);
-      this.chartDataSource.load();
-    };
-  }
-
-  render() {
-    return (
-      <div id="chart-demo">
-        <Chart
-          title="Temperature in Seattle , 2017"
-          dataSource={this.chartDataSource}>
-          <Size height={420} />
-          <ValueAxis
-            valueType="numeric"
-          >
-            <Grid opacity={0.2} />
-            <Label customizeText={this.customizeLabel} />
-          </ValueAxis>
-          <ArgumentAxis type="discrete">
-            <Grid visible={true} opacity={0.5} />
-          </ArgumentAxis>
-          <CommonPaneSettings>
-            <Border
-              visible={true}
-              width={2}
-              top={false}
-              right={false}
-            />
-          </CommonPaneSettings>
-          <Series
-            argumentField="Number"
-            valueField="Temperature"
-            type="spline"
-          />
-          <Legend visible={false} />
-          <Export enabled={true} />
-          <Tooltip
-            enabled={true}
-            customizeTooltip={customizeTooltip} />
-          <LoadingIndicator enabled={true} />
-        </Chart>
-
-        <div className="action">
-          <div className="label">Choose a month:
-          </div>
-          <SelectBox
-            id="selectbox"
-            width={150}
-            valueExpr="id"
-            displayExpr="name"
-            items={months}
-            defaultValue={1}
-            onValueChanged={this.onValueChanged} />
-        </div>
-      </div>
-    );
-  }
-
-  customizeLabel(e) {
-    return `${e.valueText}${'&#176C'}`;
-  }
+                buttonBorderColor:  "#3EE3BB",
+                fontColor:"#d8d7da",
+           
+                
+              },
+			axisX: {
+              
+				// valueFormatString: "MMM"
+			},
+			axisY: {
+                minimum: 300,
+                maximum: 850,
+                gridThickness: 0,
+                
+            },
+			// 	title: "Score",
+			// 	// prefix: "$"
+			// },
+			data: [{
+				yValueFormatString: "###",
+				xValueFormatString: "MMMM",
+				type: "spline",
+                color: "#3DE6B9",
+                lineThickness: 10,
+				dataPoints: [
+					{ x: new Date(2017, 0), y: 500 },
+					{ x: new Date(2017, 1), y: 520 },
+					{ x: new Date(2017, 2), y: 600 },
+					{ x: new Date(2017, 3), y: 635 },
+					{ x: new Date(2017, 4), y: 600 },
+					{ x: new Date(2017, 5), y: 650 },
+					{ x: new Date(2017, 6), y: 670 },
+					{ x: new Date(2017, 7), y: 643 },
+					{ x: new Date(2017, 8), y: 680 },
+					{ x: new Date(2017, 9), y: 700 },
+					{ x: new Date(2017, 10), y: 720 },
+					{ x: new Date(2017, 11), y: 755 }
+				]
+			}]
+		}
+		return (
+		<div>
+			<CanvasJSChart options = {options}
+				/* onRef={ref => this.chart = ref} */
+			/>
+			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+		</div>
+		);
+	}
 }
-
-function customizeTooltip(arg) {
-  return {
-    text: `${arg.valueText}${'&#176C'}`,
-  };
-}
-
-export default Graph;
+                         
