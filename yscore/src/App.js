@@ -7,10 +7,12 @@ import {
 import GraphPage from './pages/GraphPage';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="dashboard" element={<Dashboard />} />
