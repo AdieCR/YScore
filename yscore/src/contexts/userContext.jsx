@@ -5,7 +5,7 @@ export const useUserContext = () => {
   return useContext(userContext);
 };
 const UserContextProvider = ({ children }) => {
-  const [userDetails, setUserDetails] = useState();
+  const [userDetails, setUserDetails] = useState({});
   const [isUserLogged, setIsUserLogged] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
 
@@ -18,8 +18,6 @@ const UserContextProvider = ({ children }) => {
         setUserDetails,
         allUsers,
         setAllUsers,
-        isUserLogged, 
-        setIsUserLogged
       }}
     >
       {children}

@@ -8,10 +8,11 @@ import {
 import { useUserContext } from '../contexts/userContext';
 
 const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
-  const { userDetails, setUserDetails, loginUser } = useUserContext();
+  const { userDetails, setUserDetails, loginUser,setIsUserLogged } = useUserContext();
   const handleLogin = (e) => {
     e.preventDefault();
     loginUser();
+    setIsUserLogged(true)
   };
 
   const handleLoginFromSignup = (e) => {
@@ -92,7 +93,6 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
             >
               <Box mb={2}>
                 <Button
-                //   className={styles["login-btn"]}
                   colorScheme="blue"
                   type="submit"
                   onClick={(e) => handleLogin(e)}
