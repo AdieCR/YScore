@@ -1,17 +1,41 @@
-import axios from 'axios';
+import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://localhost:8080/',
-    timeout: 1000,
+  baseURL: "http://localhost:8080/",
+  withCredentials: true,
 });
 
+const loginAxios = async (value) => {
+  try {
+    const res = await instance.post("/users/login", value);
+    if (res) return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-const loginAxios = async(value) => {
-    const res = await instance.post('/users/login');
-    if(res) return res.data;
-}
+const logoutAxios = async () => {
+  try {
+    const res = await instance.get("/users/logout");
+    if (res) return res.data.ok;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-
+<<<<<<< HEAD
 
 
 export { loginAxios};
+=======
+const logoutAxios = async () => {
+  try {
+    const res = await instance.get("/users/logout");
+    if (res) return res.data.ok;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { loginAxios, logoutAxios };
+>>>>>>> dev
