@@ -9,12 +9,15 @@ import {
 import { useUserContext } from '../contexts/userContext';
 
 const SignIn = ({ showLoginModal, setShowLoginModal }) => {
-  const { userDetails, setUserDetails, loginUser } = useUserContext();
+  const { userDetails, setUserDetails, loginUser ,setIsUserLogged} = useUserContext();
   const [ showSignupModal, setShowSignupModal ] = useState(false);
+
 
   const handleLogin = (e) => {
     e.preventDefault();
     loginUser();
+    setIsUserLogged(true)
+   
   };
   const handleSignupFromLogin = (e) => {
   e.preventDefault();
