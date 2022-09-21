@@ -1,6 +1,13 @@
-function HomePage () {
+import React from 'react';
+import SignIn from '../components/SignIn';
+
+
+function HomePage() {
+
     return (
-        <div></div>
+        <div>
+            <SignIn />
+        </div>
     );
 };
 
