@@ -19,7 +19,7 @@ export default function Menu(props) {
       <DrawerBody>
         <Flex direction="column" mt="2rem" gap="7">
         <Link to="/"><Flex alignItems='center' gap="2" onClick={onClose}> <Icon as={TiHomeOutline} boxSize={6}/> <Text as="span">Home</Text></Flex></Link>
-        <Link to="dashbord"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={MdOutlineDashboard} boxSize={6}/><Text as="span"> Dashboard</Text></Flex></Link>
+        <Link to="dashboard"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={MdOutlineDashboard} boxSize={6}/><Text as="span"> Dashboard</Text></Flex></Link>
         <Link to="form"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={AiOutlineForm} boxSize={6}/><Text as="span"> Form</Text></Flex></Link>
         <Link to="graph"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={BsGraphUp} boxSize={6}/><Text as="span"> Score history</Text></Flex></Link>
         </Flex>
