@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {CanvasJSChart} from 'canvasjs-react-charts'
+import { Box } from '@chakra-ui/layout';
 // var CanvasJS = CanvasJSReact.CanvasJS;
 // var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export default class Graph extends Component {
@@ -53,13 +54,13 @@ export default class Graph extends Component {
 			}]
 		}
 		return (
-		<div>
-			<CanvasJSChart options = {options}
+		<Box mt="3rem" width="100%">
+			<CanvasJSChart options = {options} 
 				/* onRef={ref => this.chart = ref} */
 			/>
 			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
-		);
+		</Box>
+		)
 	}
 }
                          
