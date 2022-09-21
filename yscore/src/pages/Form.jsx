@@ -1,14 +1,16 @@
 import {
   Box,
-  Button,
   FormLabel,
   Heading,
   Progress,
   Select,
+  Button,
+
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState} from "react";
 import { Flex } from "@chakra-ui/react";
-import { useState } from "react";
+import axios from "axios";
+
 
 export default function Form() {
   const [formData, setFormData] = useState({});
@@ -17,9 +19,15 @@ export default function Form() {
     const tempFormData = { ...formData };
     tempFormData[e.target.name] = e.target.value;
     setFormData(tempFormData);
-    console.log(tempFormData)
   };
 
+
+  const handleSubmit = async() => {
+    const res = await axios.get('http://172.16.0.146:8080/score', {params:{ ...formData}});
+    console.log(res.data)
+    if(res) return res.data;
+
+}
 
   return (
     <>
@@ -73,7 +81,7 @@ export default function Form() {
           <Box width="100%">
             <FormLabel>When did you open your last bank account?</FormLabel>
             <Select
-              name="mo_sin_rcnt_tl"
+              name="mo_sin_rcnt_rev_tl_op"
               placeholder="Select option"
               onChange={handleChange}
             >
@@ -227,7 +235,7 @@ export default function Form() {
               <option value="6">More than 5</option>
             </Select>
           </Box>
-          <Button mt={4} colorScheme="teal">
+          <Button mt={4} colorScheme="teal" onClick={handleSubmit}>
             Submit
           </Button>
         </Flex>
