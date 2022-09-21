@@ -1,66 +1,94 @@
-import React from 'react';
+import React, { useState } from "react";
+import SignUp from './SignUp';
 import {
-    useDisclosure,
-    Button,
-    Input,
-    FormControl,
-    FormLabel,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-} from '@chakra-ui/react'
+  Modal, ModalOverlay, ModalContent, ModalHeader,
+  ModalBody, ModalCloseButton, Container,
+  Input, Text, Button, Box, Flex,
+} from "@chakra-ui/react";
+// import styles from "./LoginModal.module.css";
+import { useUserContext } from '../contexts/userContext';
 
+const SignIn = ({ showLoginModal, setShowLoginModal }) => {
+  const { userDetails, setUserDetails, loginUser } = useUserContext();
+  const [ showSignupModal, setShowSignupModal ] = useState(false);
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    loginUser();
+  };
+  const handleSignupFromLogin = (e) => {
+  e.preventDefault();
+  setShowLoginModal(false);
+  setShowSignupModal(true);
+  }
+  console.log("showLoginModal", showLoginModal);
 
-
-function SignIn() {
-
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const initialRef = React.useRef(null)
-    const finalRef = React.useRef(null)
-
-    return (
-        <div>
-            <Button onClick={onOpen}>Sign In</Button>
-
-            <Modal
-                initialFocusRef={initialRef}
-                finalFocusRef={finalRef}
-                isOpen={isOpen}
-                onClose={onClose}
+  return (
+    <>
+    {showSignupModal && 
+    <SignUp setShowLoginModal={setShowLoginModal} showSignupModal={showSignupModal} setShowSignupModal={setShowSignupModal}/>}
+    {showLoginModal &&  <Modal
+        border={"1px"}
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      >
+     <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <Container>
+            <ModalHeader>Login</ModalHeader>
+            <ModalBody mb={5}>
+              <Input
+                mb={5}
+                autoFocus
+                type="email"
+                placeholder="Email"
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, email: e.target.value })
+                }
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, password: e.target.value })
+                }
+              />
+            </ModalBody>
+            <Flex
+              direction={"column"}
+              justify={"center"}
+              alignItems={"center"}
+              pb={5}
             >
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Sign In</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody pb={6}>
-                        <FormControl>
-                            <FormLabel>First name</FormLabel>
-                            <Input ref={initialRef} placeholder='First name' />
-                        </FormControl>
-
-                        <FormControl mt={4}>
-                            <FormLabel>Last name</FormLabel>
-                            <Input placeholder='Last name' />
-                        </FormControl>
-                    </ModalBody>
-
-                    <ModalFooter>
-                        <Button colorScheme='blue' mr={3}>
-                            Sign In
-                        </Button>
-                        <Button onClick={onOpen}>Sign Up!</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
-        </div>
-
-    );
+              <Box mb={2}>
+                <Button
+                //   className={styles["login-btn"]}
+                  colorScheme="blue"
+                  type="submit"
+                  onClick={(e) => handleLogin(e)}
+                >
+                  Login
+                </Button>
+              </Box>
+              <Box>
+                <Text>
+                  Need A New Account?
+                  <span 
+                //   className={styles["sign-up-from-login"]}
+                style={{color: "blue", cursor: "pointer"}}
+                  onClick={(e) => handleSignupFromLogin(e)}
+                  >
+                    Sign up now!
+                  </span>
+                </Text>
+              </Box>
+            </Flex>
+          </Container>
+        </ModalContent>
+      </Modal>}
+    </>
+  );
 };
 
 export default SignIn;
