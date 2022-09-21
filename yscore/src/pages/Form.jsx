@@ -1,14 +1,40 @@
-import { Box, FormLabel, Heading, Select } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormLabel,
+  Heading,
+  Progress,
+  Select,
+} from "@chakra-ui/react";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
+import { useState } from "react";
 
 export default function Form() {
+  const [formData, setFormData] = useState({});
+
+  const handleChange = async (e) => {
+    const tempFormData = { ...formData };
+    tempFormData[e.target.name] = e.target.value;
+    setFormData(tempFormData);
+    console.log(tempFormData)
+  };
+
+
   return (
     <>
       <Heading align="center">
         Fill this questionnaire for more information
       </Heading>
+
       <Box mx="25%">
+        <Progress
+          mt="2rem"
+          borderRadius="10px"
+          colorScheme="green"
+          size="lg"
+          value={0}
+        />
         <Flex
           width="100%"
           alignItems="center"
@@ -22,14 +48,22 @@ export default function Form() {
         >
           <Box width="100%">
             <FormLabel>Application type?</FormLabel>
-            <Select placeholder="Select option">
+            <Select
+              name="application_type"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">Individual</option>
               <option value="1">Joint application</option>
             </Select>
           </Box>
           <Box width="100%">
             <FormLabel>What is your living situation?</FormLabel>
-            <Select placeholder="Select option">
+            <Select
+              name="home_ownership"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">Renting</option>
               <option value="1">Owner</option>
               <option value="2">Mortgage</option>
@@ -38,7 +72,11 @@ export default function Form() {
           </Box>
           <Box width="100%">
             <FormLabel>When did you open your last bank account?</FormLabel>
-            <Select placeholder="Select option">
+            <Select
+              name="mo_sin_rcnt_tl"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">Less than 6 month</option>
               <option value="1">6 month - 1 year</option>
               <option value="2">1 - 2 year</option>
@@ -48,7 +86,11 @@ export default function Form() {
           </Box>
           <Box width="100%">
             <FormLabel>When did you open your first bank account?</FormLabel>
-            <Select placeholder="Select option">
+            <Select
+              name="mo_sin_old_rev_tl_op"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">Less than 6 month</option>
               <option value="1">6 month - 1 year</option>
               <option value="2">1 - 2 years</option>
@@ -63,7 +105,11 @@ export default function Form() {
           </Box>
           <Box width="100%">
             <FormLabel>How many active bank accounts do you have?</FormLabel>
-            <Select placeholder="Select option">
+            <Select
+              name="num_actv_bc_tl"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -76,7 +122,11 @@ export default function Form() {
           </Box>
           <Box width="100%">
             <FormLabel>What is your annual income?</FormLabel>
-            <Select placeholder="Select option">
+            <Select
+              name="annual_inc"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">Less than $20.000</option>
               <option value="1">$20.000 - 40.000</option>
               <option value="2">$40.000 - 60.000</option>
@@ -91,7 +141,11 @@ export default function Form() {
               What is your current total bank balance? (Add up the balances on
               all your accounts.)
             </FormLabel>
-            <Select placeholder="Select option">
+            <Select
+              name="tot_cur_bal"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">Less than $10.000</option>
               <option value="1">$10.000 - 20.000</option>
               <option value="2">$20.000 - 30.000</option>
@@ -105,10 +159,12 @@ export default function Form() {
             </Select>
           </Box>
           <Box width="100%">
-            <FormLabel>
-             How long have you been employed?
-            </FormLabel>
-            <Select placeholder="Select option">
+            <FormLabel>How long have you been employed?</FormLabel>
+            <Select
+              name="emp_length"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">Less than a year</option>
               <option value="1">1 year</option>
               <option value="2">2 years</option>
@@ -123,8 +179,15 @@ export default function Form() {
             </Select>
           </Box>
           <Box width="100%">
-            <FormLabel>how many times in the last two years did you miss a payment on any of your credit accounts?</FormLabel>
-            <Select placeholder="Select option">
+            <FormLabel>
+              how many times in the last two years did you miss a payment on any
+              of your credit accounts?
+            </FormLabel>
+            <Select
+              name="delinq_2yrs"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">None</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -136,8 +199,12 @@ export default function Form() {
           </Box>
           <Box width="100%">
             <FormLabel>How long ago was your last delinquency?</FormLabel>
-            <Select placeholder="Select option">
-              <option value="0">Never</option>
+            <Select
+              name="mths_since_last_delinq"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
+              <option value="-1">Never</option>
               <option value="1">Less than 6 months</option>
               <option value="2">6 months - 1 year</option>
               <option value="3">1 - 2 year</option>
@@ -145,20 +212,26 @@ export default function Form() {
             </Select>
           </Box>
           <Box width="100%">
-            <FormLabel>how many times in the last two years did you miss a payment on any of your credit accounts?</FormLabel>
-            <Select placeholder="Select option">
+            <FormLabel>how many mortgages do you have?</FormLabel>
+            <Select
+              name="mort_acc"
+              placeholder="Select option"
+              onChange={handleChange}
+            >
               <option value="0">None</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
-              <option value="6">More than 5 times</option>
+              <option value="6">More than 5</option>
             </Select>
           </Box>
+          <Button mt={4} colorScheme="teal">
+            Submit
+          </Button>
         </Flex>
       </Box>
-
     </>
   );
 }
