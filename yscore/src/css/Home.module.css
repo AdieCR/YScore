@@ -1,19 +1,20 @@
+<<<<<<< HEAD
 body {
     /* overflow: hidden; */
+=======
+.div-container {
+  max-height: calc(100vh - 72px);
+  overflow-y: hidden;
+>>>>>>> dev
 }
 
 .top-div {
-  /* border: 1px solid; */
   background-color: #0C4670;
-  height: 74vh;
-  width: 107vw;
+  height: calc(70vh - 72px);
+  width: 100vw;
   text-align: center;
   margin: 0;
   padding: 0;
-  /* border-bottom-left-radius: 70%; */
-  /* border-top-left-radius: 30%; */
-  /* border-top-right-radius: 80%; */
-  /* border-bottom-right-radius: 70%; */
   background: rgb(10,64,107);
   background: linear-gradient(96deg, rgba(10,64,107,1) 12%, rgba(18,97,127,1) 100%); 
 }

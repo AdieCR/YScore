@@ -40,7 +40,6 @@ const SignIn = ({ showLoginModal, setShowLoginModal }) => {
     setShowLoginModal(false);
     setShowSignupModal(true);
   };
-  console.log("showLoginModal", showLoginModal);
 
   return (
     <>
