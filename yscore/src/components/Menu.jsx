@@ -6,7 +6,7 @@ import { MdOutlineDashboard } from 'react-icons/md';
 import { TiHomeOutline } from 'react-icons/ti';
 import { AiOutlineForm } from 'react-icons/ai';
 import { BsGraphUp } from 'react-icons/bs';
-import { ReactComponent as Logo } from '../images/Logo.svg';
+import { ReactComponent as Logo } from '../images/sm-logo.svg';
 
 
 export default function Menu(props) {
