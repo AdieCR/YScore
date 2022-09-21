@@ -13,13 +13,8 @@ const UserContextProvider = ({ children }) => {
       value={{
         userDetails,
         setUserDetails,
-<<<<<<< HEAD
         isUserLogged, 
         setIsUserLogged,
-=======
-        allUsers,
-        setAllUsers,
->>>>>>> dev
       }}
     >
       {children}
