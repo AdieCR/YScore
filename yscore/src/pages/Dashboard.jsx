@@ -12,7 +12,7 @@ useEffect(() => {
 },[]);
 
   return (
-    <>
+    <Box overflowY={'scroll'}>
         <Flex justify={'center'} w="100vw">
             <Box>
                 <ScoreBar mainScore={mainScore} />
@@ -28,7 +28,7 @@ useEffect(() => {
                 <DashboardCards/>
             </Box>
         </Flex>
-    </>
+    </Box>
   )
 }
 
