@@ -16,9 +16,9 @@ function App() {
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="graph" element={<GraphPage />} />
-      <Route path="form" element={<Form />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/graph" element={<GraphPage />} />
+      <Route path="/form" element={<Form />} />
 
     </Routes>
   </BrowserRouter>
