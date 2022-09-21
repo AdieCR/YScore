@@ -10,8 +10,8 @@
 .barOverflow {
     position: relative;
     overflow: hidden;
-    width: 222px;
-    height: 111px;
+    width: 444px;
+    height: 222px;
     margin-bottom: -14px;
   }
 
@@ -19,11 +19,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 222px;
-    height: 222px;
+    width: 444px;
+    height: 444px;
     border-radius: 50%;
     box-sizing: border-box;
-    border: 15px solid #E8FAF4;
+    border: 18px solid #E8FAF4;
     border-bottom-color: #40e9bb;
     border-right-color: #40e9bb;
     transform: rotate(45deg);
@@ -32,8 +32,8 @@
   .left {
     position: absolute;
     background-color:#20c997;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     left: 0;
     bottom: -24px;
@@ -84,14 +84,18 @@
 
 .top-circle {
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   left: 0;
   bottom: 87px;
   overflow: hidden;
   background: #20c997;
-  top: 88%;
-  left: 12%;
+  top: 87%;
+  left: 13%;
   transform: translate(-50%, -50%);
+}
+
+.total-count {
+  top: 155px;
 }

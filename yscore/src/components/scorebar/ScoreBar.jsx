@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import { Text, Heading } from '@chakra-ui/react';
 import './ScoreBar.css';
 
-function ScoreBar() {
-    const [mainScore, setMainScore] = useState(0);
+function ScoreBar({mainScore}) {
     const [color, setColor] = useState('');
 
     const animationStyles = {
@@ -16,10 +16,10 @@ function ScoreBar() {
         backgroundColor: color
     }
 
-    const handleColor = (number) => {
-        if (number > 669) {
+    const handleColor = (color) => {
+        if (color > 669) {
             setColor('#40e9bb');
-        } else if (number > 579) {
+        } else if (color > 579) {
             setColor('yellow');
         } else {
             setColor('red');
@@ -27,9 +27,8 @@ function ScoreBar() {
     }
     
     useEffect(() => {
-        setMainScore(850);
-        handleColor(850);
-    },[])
+        handleColor(mainScore);
+    },[mainScore])
 
   return (
     <div>
@@ -46,10 +45,10 @@ function ScoreBar() {
 
                 </div>
                 <div class="total-count">
-                <span>{mainScore}</span>
-                <div class="total-count__text">
+                <Text fontSize='6xl'>{mainScore}</Text>
+                <Text class="total-count__text">
                     Your Credit Score
-                </div>
+                </Text>
                 </div>
 
             </div>

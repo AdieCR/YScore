@@ -9,19 +9,23 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Form from './pages/Form';
+import Favicon from "react-favicon";
+import FaviconPng from './img/favicon.png';
 
 function App() {
   return (
-    <BrowserRouter>
-    <Navbar />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="graph" element={<GraphPage />} />
-      <Route path="form" element={<Form />} />
-
-    </Routes>
-  </BrowserRouter>
+    <>
+      <Favicon url={[FaviconPng]}></Favicon>
+      <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="graph" element={<GraphPage />} />
+        <Route path="form" element={<Form />} />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 
