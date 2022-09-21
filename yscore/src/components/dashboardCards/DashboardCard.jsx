@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Heading, Text, HStack } from '@chakra-ui/react';
-import './dashboardCard.css';
+import DasboardModals from './DasboardModals'
 
 function Feature({ title, desc, ...rest }) {
     return (
@@ -13,11 +13,13 @@ function Feature({ title, desc, ...rest }) {
 
 function DashboardCard({title, text}) {
   return (
-    <HStack spacing={8} maxW={'400px'}>
+    <HStack spacing={8} maxW={'400px'} className="dasboard-card">
       <Feature
         title={title}
         desc={text}
-      />
+      >
+        <DasboardModals  title={title} text={text} />
+      </Feature>
     </HStack>
   )
 }

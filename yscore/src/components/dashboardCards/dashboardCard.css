@@ -1,3 +1,13 @@
 .dasboard-card {
-    display: none;
+    margin-bottom: 20px;
+}
+
+.dasboard-card div {
+    max-width: 100%;
+}
+
+.dasboard-card p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

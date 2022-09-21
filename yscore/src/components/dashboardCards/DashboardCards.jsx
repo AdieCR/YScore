@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box }  from '@chakra-ui/react';
 import DashboardCard from './DashboardCard';
+import './dashboardCard.css';
+
 
 function DashboardCards() {
 
@@ -13,7 +15,7 @@ function DashboardCards() {
     ]
   return (
     cardInfo.map(card => {
-       return <DashboardCard class={'dasboard-card'} title={card.title} text={card.text}/>
+       return <DashboardCard  title={card.title} text={card.text}/>
     })
   )
 }
