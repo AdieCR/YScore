@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ScoreBar from '../components/scorebar/ScoreBar';
 import { Flex, Box } from '@chakra-ui/react';
-import DashboardCards from '../components/DashboardCards';
+import DashboardCards from '../components/dashboardCards/DashboardCards';
 import ProfileExplanationText from '../components/ProfileExplanationText';
+// import './dashboardCard.css';
 
 function Dashboard() {
 const [mainScore, setMainScore] = useState(0);
 
 useEffect(() => {
-    setMainScore(760);
+    setMainScore(680);
 },[]);
 
   return (

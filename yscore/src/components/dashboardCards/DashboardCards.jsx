@@ -13,7 +13,7 @@ function DashboardCards() {
     ]
   return (
     cardInfo.map(card => {
-       return <DashboardCard title={card.title} text={card.text}/>
+       return <DashboardCard class={'dasboard-card'} title={card.title} text={card.text}/>
     })
   )
 }

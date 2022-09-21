@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Heading, Text, HStack } from '@chakra-ui/react';
+import './dashboardCard.css';
 
 function Feature({ title, desc, ...rest }) {
     return (
