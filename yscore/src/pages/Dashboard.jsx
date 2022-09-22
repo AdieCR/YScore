@@ -3,13 +3,17 @@ import ScoreBar from '../components/scorebar/ScoreBar';
 import { Flex, Box } from '@chakra-ui/react';
 import DashboardCards from '../components/dashboardCards/DashboardCards';
 import ProfileExplanationText from '../components/ProfileExplanationText';
+import { useUserContext } from '../contexts/userContext';
 // import './dashboardCard.css';
 
 function Dashboard() {
 const [mainScore, setMainScore] = useState(0);
 
+const { userDetails, setUserDetails, isUserLogged, setIsUserLogged } = useUserContext();
+
 useEffect(() => {
-    setMainScore(660);
+    console.log(userDetails);
+    setMainScore(userDetails?.fico || 700);
 },[]);
 
   return (

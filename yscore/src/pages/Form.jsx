@@ -10,7 +10,6 @@ import {
 import React, { useState} from "react";
 import { Flex } from "@chakra-ui/react";
 import axios from "axios";
-import { useEffect } from "react";
 import { updateUserInfoAxios } from "../lib/apiFuncrtionality";
 
 
@@ -25,17 +24,18 @@ export default function Form() {
 
 
   const handleSubmit = async () => {
-    const res = await axios.get('http://172.16.0.146:8080/score', {params:{ ...formData}});
+    const res = await axios.get('http://172.16.0.146:8080/score', {params:{ ...formData}}, {withCredentials: true});
     console.log(res.data)
+    updateUserInfo(res.data);
     if(res) return res.data;
 
 }
 
-  const updateUserInfo = async () => {
-      console.log('jan')
+  const updateUserInfo = async (data) => {
+    console.log(data.fico)
     const res = await updateUserInfoAxios({
       info: {
-        fico: "540", questions: { "application_type": "0" }
+        fico: data.fico, questions: { ...formData }
       }
     });
     console.log("update is...", res);
@@ -43,10 +43,10 @@ export default function Form() {
   }
 
 
-  useEffect(() => {
-    console.log('piet')
-    updateUserInfo();
-  }, [])
+  // useEffect(() => {
+  //   console.log('piet')
+  //   updateUserInfo();
+  // }, [])
 
   
   return (
