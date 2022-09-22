@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Form from "./pages/Form";
+import Req from "./pages/ReqPage"
 import UserContextProvider from "./contexts/userContext";
 import Favicon from "react-favicon";
 import FaviconPng from './img/favicon.png';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/graph" element={<GraphPage />} />
           <Route path="/form" element={<Form />} />
+          <Route path="/req" element={<Req />} />
         </Routes>
       </BrowserRouter>
     </UserContextProvider>

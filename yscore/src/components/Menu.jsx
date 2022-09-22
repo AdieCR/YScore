@@ -22,6 +22,7 @@ export default function Menu(props) {
         <Link to="dashboard"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={MdOutlineDashboard} boxSize={6}/><Text as="span"> Dashboard</Text></Flex></Link>
         <Link to="form"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={AiOutlineForm} boxSize={6}/><Text as="span"> Form</Text></Flex></Link>
         <Link to="graph"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={BsGraphUp} boxSize={6}/><Text as="span"> Score history</Text></Flex></Link>
+        <Link to="req"><Flex alignItems='center' gap="2" onClick={onClose}><Icon as={BsGraphUp} boxSize={6}/><Text as="span"> Recommendations</Text></Flex></Link>
         </Flex>
       </DrawerBody>
     </DrawerContent>
