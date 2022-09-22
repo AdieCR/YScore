@@ -18,5 +18,17 @@ async function getUserByEmailModel(email) {
     console.log(err.message);
   }
 }
+
+async function updateUserInfoModel(userId, info) {
+  try {
+    console.log("info", info)
+    const { fico, questions } = info;
+    const userUpdated = await User.findOneAndUpdate({ _id: userId }, { $set: { fico: fico, questions: questions } });
+    console.log("fico", fico, "questions", questions)
+    return userUpdated;
+  } catch (err) {
+    console.log(err.message);
+  }
+}
   
-module.exports = {signUpModel, getUserByEmailModel};
+module.exports = {signUpModel, getUserByEmailModel, updateUserInfoModel};

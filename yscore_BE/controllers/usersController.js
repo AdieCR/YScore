@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const User = require("../schemas/mongooseSchema/userSchema");
-const { signUpModel } = require("../models/usersModel");
+const { signUpModel, updateUserInfoModel } = require("../models/usersModel");
 
 async function signup(req, res) {
-  const { firstName,lastName, email,dateOfBirth, password, repassword } = req.body;
+  const { firstName, lastName, email, dateOfBirth, password, repassword } =
+    req.body;
   try {
     const newUser = await User.create({
       firstName,
@@ -44,11 +45,32 @@ async function logout(req, res) {
   try {
     if (req.cookies.token) {
       res.clearCookie("token");
-    } 
+    }
     res.send({ ok: true });
   } catch (err) {
     console.log(err.message);
   }
 }
 
-module.exports = { signup, login, logout };
+async function updateUserInfo(req, res) {
+  try {
+    const { userId, info } = req.body;
+    const userUpdated = await updateUserInfoModel(userId, info);
+    console.log("userUpdated", userUpdated)
+    if (userUpdated) return userUpdated;
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+async function getUser(req, res) {
+  try {
+    const { userId } = req.body;
+    const userInfo = await User.findById(userId);
+    if (userInfo) res.send(userInfo);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+module.exports = { signup, login, logout, updateUserInfo, getUser };

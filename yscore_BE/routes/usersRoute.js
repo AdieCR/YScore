@@ -9,13 +9,10 @@ const { signUpSchema, loginSchema } = require("../schemas/validationSchema/allSc
 router.post("/signup", validateBody(signUpSchema), passwordsMatch, doesUserExist, hashPwd, UsersController.signup);
 router.post("/login", validateBody(loginSchema), isExistingUser, verifyPwd, UsersController.login);
 router.get('/logout', UsersController.logout);
+router.get("/getUser", auth, UsersController.getUser);
 
-// router.get("/verifyLogin", auth, UsersController.verifyLogin);
-// router.get("/:userId", auth, UsersController.getUser);
-// router.get("/getAllUsers", auth, UsersController.getAllUsers);
+router.put('/updateUserInfo', auth, UsersController.updateUserInfo);
 
-
-// router.put("/updateUser", auth, passwordsMatch, hashPwd, UsersController.updateUser);
 
 
 module.exports = router;

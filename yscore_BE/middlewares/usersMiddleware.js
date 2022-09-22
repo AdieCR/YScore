@@ -73,7 +73,7 @@ const {
     });
   }
   
-  async function auth(req, res, next) {
+async function auth(req, res, next) {
     const { token } = req.cookies;
     if (!token) {
       res.status(401).send("Token Required");

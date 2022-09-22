@@ -8,6 +8,8 @@ const userSchema = new Schema(
     dateOfBirth: String,
     email: String,
     password: String,
+    fico: String,
+    questions: Object
   },
   { collection: "users" }
 );
