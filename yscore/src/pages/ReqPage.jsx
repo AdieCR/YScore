@@ -1,12 +1,21 @@
-import React from "react";
-import { VStack, Flex, Heading, Box } from "@chakra-ui/layout";
-
-import "./GraphPage.css";
-import { Button } from "@chakra-ui/react";
+import React, {useEffect, useState} from 'react'
+import {VStack, Flex, Heading} from "@chakra-ui/layout";
+import './GraphPage.css'
+import {Button, Box} from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from '../contexts/userContext';
 
-function GraphPage() {
-  const navigate = useNavigate();
+function ReqPage() {
+  const [userData, setUserData] = useState({});
+
+const { userDetails, setUserDetails, isUserLogged, setIsUserLogged } = useUserContext();  
+
+  useEffect(() => {
+    console.log(userDetails);
+    setUserData(userDetails?.data)
+  },[userDetails]);
+
+    const navigate = useNavigate();
   return (
     <VStack>
       <Flex>
@@ -41,4 +50,4 @@ function GraphPage() {
   );
 }
 
-export default GraphPage;
+export default ReqPage;
