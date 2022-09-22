@@ -14,7 +14,7 @@ import {
   Box,
   Flex,
 } from "@chakra-ui/react";
-// import styles from "./LoginModal.module.css";
+import styles from "../css/SignIn.module.css";
 import { useUserContext } from "../contexts/userContext";
 import { useNavigate } from "react-router-dom";
 import { loginAxios } from "../lib/apiFuncrtionality";
@@ -109,7 +109,7 @@ const SignIn = ({ showLoginModal, setShowLoginModal }) => {
                   <Text>
                     Need A New Account?
                     <span
-                      //   className={styles["sign-up-from-login"]}
+                        className={styles["login-from-sign-up"]}
                       style={{ color: "blue", cursor: "pointer" }}
                       onClick={(e) => handleSignupFromLogin(e)}
                     >

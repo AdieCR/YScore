@@ -22,8 +22,8 @@ async function getUserByEmailModel(email) {
 async function updateUserInfoModel(userId, info) {
   try {
     console.log("info", info)
-    const { fico, questions } = info;
-    const userUpdated = await User.findOneAndUpdate({ _id: userId }, { $set: { fico: fico, questions: questions } });
+    const { fico, questions, data } = info;
+    const userUpdated = await User.findOneAndUpdate({ _id: userId }, { $set: { fico: fico, questions: questions, data:data } });
     console.log("fico", fico, "questions", questions)
     return userUpdated;
   } catch (err) {

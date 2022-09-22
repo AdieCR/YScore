@@ -8,12 +8,14 @@ import { useUserContext } from '../contexts/userContext';
 
 function Dashboard() {
 const [mainScore, setMainScore] = useState(0);
+const [userData, setUserData] = useState({});
 
 const { userDetails, setUserDetails, isUserLogged, setIsUserLogged } = useUserContext();
 
 useEffect(() => {
     console.log(userDetails);
     setMainScore(userDetails?.fico || 700);
+    setUserData(userDetails?.data)
 },[userDetails]);
 
   return (

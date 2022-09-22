@@ -4,7 +4,7 @@ import {
   ModalBody, ModalCloseButton, Container,
   Input, Text, Button, Box, Flex,
 } from "@chakra-ui/react";
-// import styles from "./LoginModal.module.css";
+import styles from "../css/SignUp.module.css";
 import { useUserContext } from '../contexts/userContext';
 import { loginAxios, signupAxios } from "../lib/apiFuncrtionality";
 import { useNavigate } from "react-router-dom";
@@ -116,16 +116,16 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
                 </Button>
               </Box>
               <Box>
-                <Text>
-                  Already have an Account?
-                  <span 
-                //   className={styles["sign-up-from-login"]}
-                style={{color: "blue", cursor: "pointer"}}
+                <Text as='span'>
+                  Already have an Account?                
+                </Text>
+                <span 
+                  className={styles["sign-up-from-login"]}
+                    style={{ color: "blue", cursor: "pointer"}}
                   onClick={(e) => handleLoginFromSignup(e)}
                   >
                     Sign In now!
                   </span>
-                </Text>
               </Box>
             </Flex>
           </Container>
