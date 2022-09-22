@@ -36,7 +36,7 @@ const updateUserInfoAxios = async (value) => {
   console.log('dirk')
   try {
     const res = await instance.put("/users/updateUserInfo", value);
-    console.log(res)
+    console.log("res", res.data);
     // if (res) return res.data;
   } catch (err) {
     console.log(err);

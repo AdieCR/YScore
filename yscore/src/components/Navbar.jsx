@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const { setUserDetails, isUserLogged, setIsUserLogged } = useUserContext();
+  const { userDetails, setUserDetails, isUserLogged, setIsUserLogged } = useUserContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ function Navbar() {
       <HamburgerIcon fontSize="2rem" onClick={onOpen} />
       <Menu onClose={onClose} isOpen={isOpen} />
 
-      {isUserLogged ? (
+      {isUserLogged && userDetails ? (
         <Button onClick={(e) => handleLogout(e)}>Log out</Button>
       ) : (
         <>

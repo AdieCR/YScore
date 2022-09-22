@@ -13,7 +13,10 @@ const UserContextProvider = ({ children }) => {
   const getUserDetails = async() => {
     const user = await getUserInfoAxios();
     console.log("userDeatilsPersisted", user);
-    if(user) setUserDetails(user);
+    if (user) {
+      setUserDetails(user);
+      setIsUserLogged(true);
+    }
     return user;
   }
 
