@@ -104,10 +104,10 @@ console.log(isLastQClicked)
   ];
 
   const updateUserInfo = async (data) => {
-    console.log(data.fico)
+    console.log(data)
     const res = await updateUserInfoAxios({
       info: {
-        fico: data.fico, questions: { ...formData }
+        fico: data.fico, questions: { ...formData }, data: data
       }
     });
     console.log("update is...", res);
