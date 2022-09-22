@@ -32,7 +32,7 @@ function Navbar() {
         <Button onClick={(e) => handleLogout(e)}>Log out</Button>
       ) : (
         <>
-          <Button onClick={() => setShowLoginModal(true)}>Sign In/Up</Button>
+          <Button onClick={() => setShowLoginModal(true)} backgroundColor="rgb(64, 233, 187)">Sign In/Up</Button>
         </>
       )}
       <SignIn
