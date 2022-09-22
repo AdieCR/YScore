@@ -7,8 +7,8 @@ const { validateBody } = require("../Middlewares/validateBody");
 const { signUpSchema, loginSchema } = require("../schemas/validationSchema/allSchemas");
 
 router.post("/signup", validateBody(signUpSchema), passwordsMatch, doesUserExist, hashPwd, UsersController.signup);
-// router.post("/login", validateBody(loginSchema), isExistingUser, verifyPwd, UsersController.login);
-// router.get('/logout', UsersController.logout);
+router.post("/login", validateBody(loginSchema), isExistingUser, verifyPwd, UsersController.login);
+router.get('/logout', UsersController.logout);
 
 // router.get("/verifyLogin", auth, UsersController.verifyLogin);
 // router.get("/:userId", auth, UsersController.getUser);
