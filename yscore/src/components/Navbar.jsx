@@ -13,18 +13,15 @@ function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
-
-  const handleLogout = async(e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
     const isLoggedOut = await logoutAxios();
     console.log("isLoggedOut", isLoggedOut);
-    if (isLoggedOut) {
-      setIsUserLogged(false);
-      setShowLoginModal(false);
-      setUserDetails({});
-      navigate("/");
-    }
-  }
+    setIsUserLogged(false);
+    setShowLoginModal(false);
+    setUserDetails({});
+    navigate("/");
+  };
 
   return (
     <Flex p="1rem" justifyContent="space-between">
@@ -35,7 +32,7 @@ function Navbar() {
         <Button onClick={(e) => handleLogout(e)}>Log out</Button>
       ) : (
         <>
-          <Button onClick={() => setShowLoginModal(true)}>Sign In/Up</Button>
+          <Button onClick={() => setShowLoginModal(true)} backgroundColor="rgb(64, 233, 187)">Sign In/Up</Button>
         </>
       )}
       <SignIn

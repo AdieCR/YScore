@@ -22,4 +22,33 @@ async function signup(req, res) {
   }
 }
 
-module.exports = { signup };
+async function login(req, res) {
+  try {
+    let { user, token } = req.body;
+    user = user.toObject();
+    res.cookie("token", token, {
+      maxAge: 15151252151251,
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
+    delete user.password;
+    console.log("sending user.. ", user);
+    res.send(user);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+async function logout(req, res) {
+  try {
+    if (req.cookies.token) {
+      res.clearCookie("token");
+    } 
+    res.send({ ok: true });
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+module.exports = { signup, login, logout };
