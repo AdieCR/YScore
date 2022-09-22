@@ -57,7 +57,7 @@ async function updateUserInfo(req, res) {
     const { userId, info } = req.body;
     const userUpdated = await updateUserInfoModel(userId, info);
     console.log("userUpdated", userUpdated)
-    if (userUpdated) return userUpdated;
+    if (userUpdated) res.send(userUpdated);
   } catch (err) {
     console.log(err.message);
   }
