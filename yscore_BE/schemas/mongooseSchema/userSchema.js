@@ -9,7 +9,8 @@ const userSchema = new Schema(
     email: String,
     password: String,
     fico: String,
-    questions: Object
+    questions: Object,
+    data: Object
   },
   { collection: "users" }
 );
