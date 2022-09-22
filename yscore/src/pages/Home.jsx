@@ -14,12 +14,7 @@ function HomePage() {
                 <Image className={styles["logo"]} src={Logo} alt="logo" />
               </Box>
                 <Box className={styles["text-div"]} m={'auto'}>
-                Establishing a good credit score can sometimes be a complex, and
-                not always clear process, but it shouldn't be. We in YScore
-                believe it is vital for your overall financial picture to
-                understand and know how to improve your credit score. Thanks to
-                YScore, you can easily get your score and important insight on
-                your credit score and on how to improve it.
+                Your credit score can have a big impact on your financial future. Sign up for YScore to get your credit score for free! Join us and get the tools you need to help understand, manage, and master your credit - in under 3 minutes. Checking your credit score with YScore won't hurt your score.
               </Box>
             </Box>
           </Box>
