@@ -23,19 +23,6 @@ const logoutAxios = async () => {
   }
 };
 
-<<<<<<< HEAD
 
 
-export { loginAxios};
-=======
-const logoutAxios = async () => {
-  try {
-    const res = await instance.get("/users/logout");
-    if (res) return res.data.ok;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export { loginAxios, logoutAxios };
->>>>>>> dev
+export { loginAxios, logoutAxios};
