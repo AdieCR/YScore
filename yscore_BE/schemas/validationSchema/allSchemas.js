@@ -9,7 +9,7 @@ const signUpSchema = {
       repassword: { type: "string", minLength: 2 },
     },
     required: ["email", "dateOfBirth", "firstName", "lastName" ,"password", "repassword"],
-    additionalProperties: false,
+    additionalProperties: true,
   };
   
   
