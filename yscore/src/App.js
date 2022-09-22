@@ -6,10 +6,13 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Form from "./pages/Form";
 import UserContextProvider from "./contexts/userContext";
+import Favicon from "react-favicon";
+import FaviconPng from './img/favicon.png';
 
 function App() {
   return (
     <UserContextProvider>
+      <Favicon url={[FaviconPng]}></Favicon>
       <BrowserRouter>
         <Navbar />
         <Routes>
