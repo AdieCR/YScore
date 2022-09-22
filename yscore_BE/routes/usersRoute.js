@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const UsersController = require("../controllers/usersController");
-const {passwordsMatch, hashPwd, doesUserExist, isExistingUser, auth, verifyPwd} = require("../Middlewares/usersMiddleware");
-const { validateBody } = require("../Middlewares/validateBody");
+const {passwordsMatch, hashPwd, doesUserExist, isExistingUser, auth, verifyPwd} = require("../middlewares/usersMiddleware");
+const { validateBody } = require("../middlewares/validateBody");
 const { signUpSchema, loginSchema } = require("../schemas/validationSchema/allSchemas");
 
 router.post("/signup", validateBody(signUpSchema), passwordsMatch, doesUserExist, hashPwd, UsersController.signup);
