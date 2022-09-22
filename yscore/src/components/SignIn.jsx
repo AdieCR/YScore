@@ -16,16 +16,26 @@ import {
 } from "@chakra-ui/react";
 // import styles from "./LoginModal.module.css";
 import { useUserContext } from "../contexts/userContext";
+import { useNavigate } from "react-router-dom";
+import { loginAxios } from "../lib/apiFuncrtionality";
 
 const SignIn = ({ showLoginModal, setShowLoginModal }) => {
-  const { userDetails, setUserDetails, loginUser, setIsUserLogged } =
+  const { userDetails, setUserDetails, isUserLogged, setIsUserLogged } =
     useUserContext();
+
+  const navigate = useNavigate();
   const [showSignupModal, setShowSignupModal] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    loginUser();
-    setIsUserLogged(true);
+    const user = await loginAxios(userDetails);
+    console.log("user logged", user);
+    if (user) {
+      setIsUserLogged(true);
+      setUserDetails(user);
+      console.log("userDetails", userDetails);
+      navigate("/form");
+    }
   };
   const handleSignupFromLogin = (e) => {
     e.preventDefault();
@@ -33,17 +43,16 @@ const SignIn = ({ showLoginModal, setShowLoginModal }) => {
     setShowSignupModal(true);
   };
 
-
   return (
     <>
-      {showSignupModal && (
+      {showSignupModal && !isUserLogged && (
         <SignUp
           setShowLoginModal={setShowLoginModal}
           showSignupModal={showSignupModal}
           setShowSignupModal={setShowSignupModal}
         />
       )}
-      {showLoginModal && (
+      {showLoginModal && !isUserLogged && (
         <Modal
           border={"1px"}
           isOpen={showLoginModal}
@@ -60,15 +69,23 @@ const SignIn = ({ showLoginModal, setShowLoginModal }) => {
                   autoFocus
                   type="email"
                   placeholder="Email"
+                  name={"email"}
                   onChange={(e) =>
-                    setUserDetails({ ...userDetails, email: e.target.value })
+                    setUserDetails({
+                      ...userDetails,
+                      [e.target.name]: e.target.value,
+                    })
                   }
                 />
                 <Input
                   type="password"
                   placeholder="Password"
+                  name={"password"}
                   onChange={(e) =>
-                    setUserDetails({ ...userDetails, password: e.target.value })
+                    setUserDetails({
+                      ...userDetails,
+                      [e.target.name]: e.target.value,
+                    })
                   }
                 />
               </ModalBody>
