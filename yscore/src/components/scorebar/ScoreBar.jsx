@@ -20,9 +20,9 @@ function ScoreBar({mainScore}) {
         if (color > 669) {
             setColor('#40e9bb');
         } else if (color > 579) {
-            setColor('yellow');
+            setColor('#ff9802');
         } else {
-            setColor('red');
+            setColor('#ff4100');
         }
     }
     

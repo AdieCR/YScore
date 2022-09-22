@@ -5,7 +5,7 @@ function DasboardModals({title, text}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
       <>
-        <Button onClick={onOpen} backgroundColor="rgb(64, 233, 187)">See More</Button>
+        <Button onClick={onOpen} backgroundColor="rgb(64, 233, 187)" color="white" size={'xs'}>See More</Button>
   
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -16,7 +16,7 @@ function DasboardModals({title, text}) {
             </ModalBody>
                 <Text p={'12px 24px'}>{text}</Text>
             <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose} display="block">
+              <Button colorScheme='blue' mr={3} onClick={onClose} display="block" backgroundColor="rgb(64, 233, 187)">
                 Close
               </Button>
             </ModalFooter>

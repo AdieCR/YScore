@@ -9,7 +9,7 @@ function Dashboard() {
 const [mainScore, setMainScore] = useState(0);
 
 useEffect(() => {
-    setMainScore(680);
+    setMainScore(660);
 },[]);
 
   return (
@@ -19,12 +19,12 @@ useEffect(() => {
                 <ScoreBar mainScore={mainScore} />
             </Box>
         </Flex>
-        <Flex justify={'center'} w="100vw" pt={36}>
+        <Flex justify={'center'} w="100vw" pt={'25px'}>
             <Box maxW={'400px'}>
                 <ProfileExplanationText mainScore={mainScore} />
             </Box>
         </Flex>
-        <Flex justify={'center'} w="100vw" pt={36}>
+        <Flex justify={'center'} w="100vw" className='profile-card-container'>
             <Box>
                 <DashboardCards/>
             </Box>

@@ -37,7 +37,7 @@ function ProfileExplanationText({mainScore}) {
   return (
     <Flex direction={'column'} align={'center'}>
         <Heading pb={'16px'}>{title}</Heading>
-        <Text>{text}</Text>
+        <Text pb={'26px'}>{text}</Text>
     </Flex>
   )
 }
