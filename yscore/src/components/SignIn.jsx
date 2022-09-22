@@ -34,7 +34,7 @@ const SignIn = ({ showLoginModal, setShowLoginModal }) => {
       setIsUserLogged(true);
       setUserDetails(user);
       console.log("userDetails", userDetails);
-      navigate("/form");
+      navigate("/dashboard");
     }
   };
   const handleSignupFromLogin = (e) => {

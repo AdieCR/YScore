@@ -6,13 +6,22 @@ import {
 } from "@chakra-ui/react";
 // import styles from "./LoginModal.module.css";
 import { useUserContext } from '../contexts/userContext';
+import { loginAxios, signupAxios } from "../lib/apiFuncrtionality";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
-  const { userDetails, setUserDetails, loginUser,setIsUserLogged } = useUserContext();
-  const handleLogin = (e) => {
+  const { userDetails, setUserDetails, setIsUserLogged } = useUserContext();
+  const navigate = useNavigate();
+  
+  const handleSignup = async (e) => {
     e.preventDefault();
-    loginUser();
-    setIsUserLogged(true)
+    const user = await signupAxios(userDetails);
+    console.log("user signed up", user);
+    if (user) {
+      setIsUserLogged(true);
+      setShowSignupModal(false);
+      navigate("/form");
+    }
   };
 
   const handleLoginFromSignup = (e) => {
@@ -20,7 +29,7 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
   setShowSignupModal(false);
   setShowLoginModal(true);
   }
-  console.log("showSignupModal", showSignupModal);
+  
   return (
     <>
       <Modal
@@ -39,8 +48,9 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
                 autoFocus
                 type="text"
                 placeholder="First Name"
+                name= "firstName"
                 onChange={(e) =>
-                  setUserDetails({ ...userDetails, firstName: e.target.value })
+                  setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
                 }
               />
               <Input
@@ -48,8 +58,9 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
                 autoFocus
                 type="text"
                 placeholder="Last Name"
+                name= "lastName"
                 onChange={(e) =>
-                  setUserDetails({ ...userDetails, lastName: e.target.value })
+                  setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
                 }
               />
               <Input
@@ -57,8 +68,9 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
                 autoFocus
                 type="text"
                 placeholder="Date of Birth"
+                name = "dateOfBirth"
                 onChange={(e) =>
-                  setUserDetails({ ...userDetails, dateOfBirth: e.target.value })
+                  setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
                 }
               />
               <Input
@@ -66,22 +78,25 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
                 autoFocus
                 type="email"
                 placeholder="email"
+                name = "email"
                 onChange={(e) =>
-                  setUserDetails({ ...userDetails, email: e.target.value })
+                  setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
                 }
               />
               <Input
                 type="password"
                 placeholder="Password"
+                name = "password"
                 onChange={(e) =>
-                  setUserDetails({ ...userDetails, password: e.target.value })
+                  setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
                 }
               />
                <Input
                 type="password"
                 placeholder="Confirm Password"
+                name = "repassword"
                 onChange={(e) =>
-                  setUserDetails({ ...userDetails, repassword: e.target.value })
+                  setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
                 }
               />
             </ModalBody>
@@ -95,7 +110,7 @@ const SignUp = ({ setShowLoginModal, showSignupModal, setShowSignupModal }) => {
                 <Button
                   colorScheme="blue"
                   type="submit"
-                  onClick={(e) => handleLogin(e)}
+                  onClick={(e) => handleSignup(e)}
                 >
                   Creat New Account
                 </Button>
