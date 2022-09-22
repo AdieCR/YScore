@@ -1,17 +1,8 @@
 .div-container {
   max-height: calc(100vh - 72px);
   overflow-y: hidden;
-}
-
-.top-div {
-  background-color: #0C4670;
-  height: calc(70vh - 72px);
-  width: 100vw;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background: rgb(10,64,107);
-  background: linear-gradient(96deg, rgba(10,64,107,1) 12%, rgba(18,97,127,1) 100%); 
+  margin-right: 2%;
+  margin-left: 2%;
 }
 
 .top-div-content {
@@ -27,25 +18,36 @@
   height: 30vh;
   text-align: center;
   padding: 0;
-  margin-top: 0 !important;
+
 }
 
 .logo {
-    width: 30vw;
-    height: 40vh;
+  margin-top: 5%;
+  margin-bottom: 5%;
+    width: 18vw;
+    height: 18vh;
     /* border: 1px solid; */
-    padding-top: 60px;
-    margin: 0 auto;
+   
+    margin-right: auto;
+
 }
 
 .text-div {
     position: relative;
-    top: 150px;
-    border-radius: 2%;
+    margin-top: 5%;
     font-size: 1.4rem;
     color: black;
-    background-color: rgba(255,255,255,1);
-    padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    /* margin-bottom: 1rem; */
+ 
+}
+.home-pic{
+  height:30vh;
+  width:40vw;
+  border-radius: 15px;
+}
+.logo-container{
+  width:100%;
+  display: flex;
+  justify-content: flex-start;
+    
 }
