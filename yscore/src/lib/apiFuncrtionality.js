@@ -23,4 +23,13 @@ const logoutAxios = async () => {
   }
 };
 
-export { loginAxios, logoutAxios };
+const signupAxios = async (value) => {
+  try {
+    const res = await instance.post("/users/signup", value);
+    if (res) return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { loginAxios, logoutAxios, signupAxios };
