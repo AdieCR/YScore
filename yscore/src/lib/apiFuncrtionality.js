@@ -32,4 +32,24 @@ const signupAxios = async (value) => {
   }
 };
 
-export { loginAxios, logoutAxios, signupAxios };
+const updateUserInfoAxios = async (value) => {
+  console.log('dirk')
+  try {
+    const res = await instance.put("/users/updateUserInfo", value);
+    console.log(res)
+    // if (res) return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getUserInfoAxios = async (value) => {
+  try {
+    const res = await instance.get("/users/getUser", value);
+    if (res) return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { loginAxios, logoutAxios, signupAxios, updateUserInfoAxios, getUserInfoAxios };
