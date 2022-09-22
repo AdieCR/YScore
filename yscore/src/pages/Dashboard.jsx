@@ -14,7 +14,7 @@ const { userDetails, setUserDetails, isUserLogged, setIsUserLogged } = useUserCo
 useEffect(() => {
     console.log(userDetails);
     setMainScore(userDetails?.fico || 700);
-},[]);
+},[userDetails]);
 
   return (
     <Box overflowY={'scroll'}>

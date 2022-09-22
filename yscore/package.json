@@ -12,6 +12,7 @@
     "axios": "^0.27.2",
     "canvasjs-react-charts": "^1.0.5",
     "devextreme": "^22.1.5",
+    "framer-motion": "^7.3.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-favicon": "^1.0.1",
