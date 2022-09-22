@@ -15,11 +15,13 @@ import Tenth from "../components/FormQuestions.jsx/Tenth";
 import Eleventh from "../components/FormQuestions.jsx/Eleventh";
 import './GraphPage.css'
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../contexts/userContext";
 
 export default function Form() {
   const [formData, setFormData] = useState({});
   const [question, setQuestion] = useState(0);
   const [isLastQClicked, setIsLastQClicked] = useState(false);
+  const { userDetails, setUserDetails, setIsUserLogged } = useUserContext();
 const navigate = useNavigate()
 
   const handleChange = async (e) => {
@@ -32,10 +34,11 @@ console.log(isLastQClicked)
    
 
   const handleSubmit = async () => {
-    const res = await axios.get('http://172.16.0.146:8080/score', {params:{ ...formData}}, {withCredentials: true});
+    const res = await axios.get('http://ec2-3-72-250-109.eu-central-1.compute.amazonaws.com:8080/score', {params:{ ...formData}}, {withCredentials: true});
     console.log(res.data)
     updateUserInfo(res.data);
     if (res) {
+      setUserDetails(res.data)
       navigate("/dashboard")
       return res.data;
     } 

@@ -4,15 +4,18 @@ import { Flex, Box } from '@chakra-ui/react';
 import DashboardCards from '../components/dashboardCards/DashboardCards';
 import ProfileExplanationText from '../components/ProfileExplanationText';
 import { useUserContext } from '../contexts/userContext';
+import { Navigate, useNavigate } from 'react-router-dom';
 // import './dashboardCard.css';
 
 function Dashboard() {
 const [mainScore, setMainScore] = useState(0);
 const [userData, setUserData] = useState({});
 
+
 const { userDetails, setUserDetails, isUserLogged, setIsUserLogged } = useUserContext();
 
 useEffect(() => {
+    setUserDetails(userDetails)
     console.log(userDetails);
     setMainScore(userDetails?.fico || 700);
     setUserData(userDetails?.data)
